@@ -1,10 +1,25 @@
+open System
+
+let peopleArray =
+    [| "Jon"
+       "Gustavo"
+       "Gabriel"
+       "Jonas"
+       "" |]
+
+let isValid person = String.IsNullOrWhiteSpace person |> not
+
+let isAllowed person = person <> "Gustavo"
+
+let sayHello person = printfn "Opa, salve salve %s" person
+
 [<EntryPoint>]
 let main argv =
-    let person =
-        if argv.Length > 0 then
-            argv.[0]
-        else
-            "Anon Person"
+    peopleArray
+    |> Array.filter isValid
+    |> Array.filter isAllowed
+    |> Array.iter sayHello
+    printfn "Bom conhecer oceis"
 
-    printfn "Simple print line %s" person
-    0 // return an integer exit code
+
+    0
