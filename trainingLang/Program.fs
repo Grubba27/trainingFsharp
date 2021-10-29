@@ -1,8 +1,10 @@
 [<EntryPoint>]
 let main argv =
-    let mutable person = "Person"
-    if argv.Length > 0 then
-        // <- é igual ao = só que para mutable
-        person <- argv.[0]
+    let person =
+        if argv.Length > 0 then
+            argv.[0]
+        else
+            "Anon Person"
+
     printfn "Simple print line %s" person
     0 // return an integer exit code
